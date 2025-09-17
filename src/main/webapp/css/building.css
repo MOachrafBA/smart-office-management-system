@@ -1,0 +1,39 @@
+/* building.css – Styles nur für die Gebäude-/Etagen-Ansicht */
+.img-wrap {
+  position: relative;
+  max-width: 1100px;
+}
+.img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+/* klickbare Etagen-Bänder */
+.hotspot {
+  position: absolute;
+  left: 3%;
+  right: 3%;
+  border: 3px solid #0b4b73;
+  border-radius: 10px;
+  background: rgba(13,110,253,.15);
+  display: block;
+  text-decoration: none;
+  transition: background .15s ease;
+}
+.hotspot:hover {
+  background: rgba(13,110,253,.28);
+}
+
+.hs-label {
+  position: absolute;
+  left: 6%;
+  top: 6%;
+  font-weight: 600;
+  background: rgba(255,255,255,.85);
+  padding: .2rem .5rem;
+  border-radius: .5rem;
+}
+
+.back { margin-bottom: 12px; display: inline-block; }
