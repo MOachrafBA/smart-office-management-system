@@ -27,10 +27,12 @@
 %>
 
 <div class="img-wrap">
+  <!-- Bild des Gebäudes anzeigen -->
   <img src="<%=request.getContextPath()%>/img/building.png" alt="Gebäude">
   <% for (int i=0; i<floors.size() && i<tops.length; i++) {
        Floor f = floors.get(i);
   %>
+    <!-- Etage anzeigen via Hotspot + klickbare Bereiche für jede Etage+ Link zu den Räumen der Etage-->
     <a class="hotspot"
        style="top:<%=tops[i]%>%;height:<%=bandH%>%"
        href="<%=request.getContextPath()%>/rooms?floorId=<%=f.getId()%>&buildingId=<%=buildingId%>"

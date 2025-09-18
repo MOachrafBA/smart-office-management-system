@@ -4,7 +4,7 @@
 <head>
   <title>Sensoren</title>
   <link rel="stylesheet" href="<%=request.getContextPath()%>/css/app.css">
-  <script> setInterval(()=>location.reload(), 10000); </script>
+  <script src="<%=request.getContextPath()%>/js/auto-refresh.js"></script>
 </head>
 <body>
 <%
@@ -45,16 +45,23 @@
         <input type="hidden" name="buildingId" value="<%= bParam %>"/>
         <input type="hidden" name="sensorId"   value="<%= s.getId() %>"/>
 
+        <%--Range-Slider: 0-100% Helligkeit/Verschattung Werte: 0% = aus/geschlossen, 100% = an/offen --%>
         <% if ("light".equals(k) || "blind_position".equals(k)) { %>
           <input type="range"  name="desiredValue" min="0" max="100" step="1"
                  value="<%= (s.getValue()==null) ? "0" : s.getValue() %>"/>
+        
+        <%--Dezimalstellen für Temperatur. Präzision: 0.1°C Schritte --%>
         <% } else if ("temperature_setpoint".equals(k)) { %>
           <input type="number" name="desiredValue" step="0.1"
                  value="<%= (s.getValue()==null) ? "21.0" : s.getValue() %>"/>
+        
+        <%---Checkbox: Ein/Aus-Schalter --%>
         <% } else if ("plug_switch".equals(k)) { %>
           <input type="hidden" name="desiredValue" value="0"/>
           <label><input type="checkbox" name="desiredValue" value="1"
                  <%= "1".equals(s.getValue()) ? "checked" : "" %> /> an/aus</label>
+        
+        <%--für alle andere Sensoren --%>
         <% } else { %>
           <input type="number" name="desiredValue" step="0.1"
                  value="<%= (s.getValue()==null) ? "0" : s.getValue() %>"/>

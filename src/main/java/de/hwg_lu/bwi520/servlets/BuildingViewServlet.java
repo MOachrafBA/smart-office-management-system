@@ -10,10 +10,13 @@ public class BuildingViewServlet extends HttpServlet {
 
   @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
+        //buildingId aus URL-Parameter lesen und in Integer umwandeln
     int buildingId = Integer.parseInt(req.getParameter("buildingId"));
     try {
       req.setAttribute("buildingId", buildingId);
-      req.setAttribute("floors", floorDao.byBuilding(buildingId)); // EG..2.OG sortiert
+      // FloorDao holt Etagen für dieses Gebäude EG..2.OG sortiert
+      req.setAttribute("floors", floorDao.byBuilding(buildingId)); 
+      // Attribute an JSP-Seite übergeben
       req.getRequestDispatcher("/jsp/building.jsp").forward(req, resp);
     } catch (SQLException e) { throw new ServletException(e); }
   }

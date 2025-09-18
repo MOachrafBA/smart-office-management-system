@@ -7,9 +7,12 @@ public class RoomsServlet extends HttpServlet {
   private final RoomDao dao = new RoomDao();
   @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
+    // floorId aus URL-Parameter lesen und in Integer umwandeln
     int floorId = Integer.parseInt(req.getParameter("floorId"));
+    // RoomDao holt Räume für diese Etage
     try {
       req.setAttribute("rooms", dao.byFloor(floorId));
+      // Attribute an JSP-Seite übergeben
       req.getRequestDispatcher("/jsp/rooms.jsp").forward(req, resp);
     } catch (SQLException e) { throw new ServletException(e); }
   }

@@ -10,7 +10,9 @@ public class BuildingsServlet extends HttpServlet {
   @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     try {
+      // 1. Daten aus Datenbank holen(DAO holt Gebäude aus Datenbank)
       req.setAttribute("buildings", dao.findAll());
+      // 2. Attribute an JSP-Seite übergeben
       req.getRequestDispatcher("/jsp/buildings.jsp").forward(req, resp);
     } catch (SQLException e) { throw new ServletException(e); }
   }
