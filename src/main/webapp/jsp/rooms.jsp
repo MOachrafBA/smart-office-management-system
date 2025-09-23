@@ -3,14 +3,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Räume</title>
+  <title>Smart Office - Räume</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/app.css">
-  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/plan.css">
+  <link rel="stylesheet" href="/BWI520/css/app.css">
+  <link rel="stylesheet" href="/BWI520/css/common.css">
+  <link rel="stylesheet" href="/BWI520/css/plan.css">
 </head>
 <body>
-<a class="back" href="<%=request.getContextPath()%>/building?buildingId=<%=request.getParameter("buildingId")%>">&laquo; zurück</a>
-<h2>Räume</h2>
+
+  <!-- Banner -->
+  <div class="banner">
+    <h1>🏢 Smart Office Management System</h1>
+    <p>Intelligente Gebäudeüberwachung und -steuerung</p>
+  </div>
+
+  <!-- Hauptinhalt -->
+  <div class="main-content">
+    <h2>Räume</h2>
 
 <%
   @SuppressWarnings("unchecked")
@@ -31,5 +40,18 @@
   </a>
 <% } %>
 </div>
+
+  </div>
+
+  <!-- Untere Navigation - Ganz unten auf der Webseite -->
+  <nav class="bottom-nav">
+    <a href="<%=request.getContextPath()%>/building?buildingId=<%=request.getParameter("buildingId")%>">🏠 Zurück zu Etagen</a>
+    <a href="<%=request.getContextPath()%>/jsp/test-rooms.jsp">🧪 Test-Version</a>
+    <span>| Smart Office Management System v1.0</span>
+  </nav>
+
+  <!-- Padding für fixed Navigation -->
+  <div class="nav-padding"></div>
+
 </body>
 </html>

@@ -1,0 +1,116 @@
+/* buildings.css - Spezifische Styles für die Buildings-Seite */
+
+/* Banner für alle Seiten */
+.banner {
+    background: #0b4b73;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.banner h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.banner p {
+    margin: 5px 0 0 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Hauptinhalt Container */
+.main-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Gebäude-Liste */
+.building-list {
+    list-style: none;
+    padding: 0;
+}
+
+.building-item {
+    margin: 10px 0;
+}
+
+.building-link {
+    display: block;
+    padding: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    border-left: 4px solid;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.building-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Gebäude-Farben */
+.building-blue {
+    background: #e3f2fd;
+    color: #0b4b73;
+    border-left-color: #2196f3;
+}
+
+.building-green {
+    background: #e8f5e8;
+    color: #2e7d32;
+    border-left-color: #4caf50;
+}
+
+.building-orange {
+    background: #fff3e0;
+    color: #f57c00;
+    border-left-color: #ff9800;
+}
+
+.building-pink {
+    background: #fce4ec;
+    color: #c2185b;
+    border-left-color: #e91e63;
+}
+
+.building-purple {
+    background: #f3e5f5;
+    color: #7b1fa2;
+    border-left-color: #9c27b0;
+}
+
+/* Untere Navigation */
+.bottom-nav {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-top: 30px;
+    text-align: center;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.bottom-nav a {
+    margin: 0 10px;
+    color: #0b4b73;
+    text-decoration: none;
+}
+
+.bottom-nav a:hover {
+    text-decoration: underline;
+}
+
+.bottom-nav span {
+    color: #666;
+}
+
+/* Padding für fixed Navigation */
+.nav-padding {
+    height: 80px;
+}

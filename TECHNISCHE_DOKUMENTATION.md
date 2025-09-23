@@ -122,12 +122,65 @@ Sensor (1) —< (N) ControlRequest
 
 3.1 Architektur-Pattern: MVC
 
-Model (Beans)
+#### Moderne MVC-Implementierung (Aktuelle Anwendung)
 
+**Model (Beans)**
 * Building: POJO für Gebäude
 * Floor: POJO für Etagen (mit indexNo für Sortierung)
 * Room: POJO für Räume (code, name)
 * SensorRow: POJO für Sensordaten inkl. aktuellem Wert
+
+#### Alternative: Dozent's Kochrezept (Traditionell)
+
+**Session-basierte Beans:**
+```java
+public class BuildingsBean {
+  private List<Building> buildings;
+  private String message;
+  
+  public void loadBuildings() {
+    try {
+      this.buildings = buildingDao.findAll();
+      this.message = "Gebäude erfolgreich geladen";
+    } catch (SQLException e) {
+      this.message = "Fehler beim Laden der Gebäude";
+    }
+  }
+}
+```
+
+**Appl als Controller:**
+```java
+public class BuildingsAppl extends HttpServlet {
+  @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+    // 1. Beans in Session einbinden
+    BuildingsBean bean = (BuildingsBean) session.getAttribute("buildingsBean");
+    if (bean == null) {
+      bean = new BuildingsBean();
+      session.setAttribute("buildingsBean", bean);
+    }
+    
+    // 2. Parameter übernehmen
+    String action = req.getParameter("action");
+    
+    // 3. Aktionsweiche
+    if ("showBuildings".equals(action)) {
+      bean.loadBuildings();
+      req.setAttribute("message", bean.getMessage());
+    } else {
+      bean.loadBuildings();
+      req.setAttribute("message", "Willkommen");
+    }
+    
+    // 4. Weiterleitung
+    req.getRequestDispatcher("/jsp/buildings.jsp").forward(req, resp);
+  }
+}
+```
+
+**Vorteile beider Ansätze:**
+- **Moderne MVC**: Saubere Trennung, RESTful URLs, Wartbarkeit
+- **Dozent's Kochrezept**: Session-basiert, Aktionsweichen, Messages
 
 View (JSPs)
 

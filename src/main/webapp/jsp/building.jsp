@@ -4,14 +4,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Etage wählen</title>
-  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/app.css">
-  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/building.css">
+  <title>Smart Office - Etage wählen</title>
+  <link rel="stylesheet" href="/BWI520/css/app.css">
+  <link rel="stylesheet" href="/BWI520/css/common.css">
+  <link rel="stylesheet" href="/BWI520/css/building.css">
 </head>
 <body>
 
-<a class="back" href="<%=request.getContextPath()%>/buildings">&laquo; zurück</a>
-<h2>Etage wählen</h2>
+  <!-- Banner -->
+  <div class="banner">
+    <h1>🏢 Smart Office Management System</h1>
+    <p>Intelligente Gebäudeüberwachung und -steuerung</p>
+  </div>
+
+  <!-- Hauptinhalt -->
+  <div class="main-content">
+    <h2>Etage wählen</h2>
 
 <%
   @SuppressWarnings("unchecked")
@@ -41,6 +49,18 @@
     </a>
   <% } %>
 </div>
+
+  </div>
+
+  <!-- Untere Navigation - Ganz unten auf der Webseite -->
+  <nav class="bottom-nav">
+    <a href="<%=request.getContextPath()%>/buildings">🏠 Zurück zu Gebäuden</a>
+    <a href="<%=request.getContextPath()%>/jsp/test-building.jsp">🧪 Test-Version</a>
+    <span>| Smart Office Management System v1.0</span>
+  </nav>
+
+  <!-- Padding für fixed Navigation -->
+  <div class="nav-padding"></div>
 
 </body>
 </html>

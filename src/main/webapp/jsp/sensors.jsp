@@ -2,11 +2,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sensoren</title>
-  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/app.css">
-  <script src="<%=request.getContextPath()%>/js/auto-refresh.js"></script>
+  <title>Smart Office - Sensoren</title>
+  <link rel="stylesheet" href="/BWI520/css/app.css">
+  <link rel="stylesheet" href="/BWI520/css/common.css">
+  <script src="/BWI520/js/auto-refresh.js"></script>
 </head>
 <body>
+
+  <!-- Banner -->
+  <div class="banner">
+    <h1>🏢 Smart Office Management System</h1>
+    <p>Intelligente Gebäudeüberwachung und -steuerung</p>
+  </div>
+
+  <!-- Hauptinhalt -->
+  <div class="main-content">
 <%
   String roomId     = request.getParameter("roomId");
   String floorId    = request.getParameter("floorId");
@@ -17,9 +27,6 @@
   String fParam = (floorId == null)    ? "" : floorId;
   String bParam = (buildingId == null) ? "" : buildingId;
 %>
-
-<a class="back" href="<%=request.getContextPath()%>/rooms?floorId=<%= fParam %>&buildingId=<%= bParam %>">&laquo; zurück</a>
-<a class="back" href="<%=request.getContextPath()%>/jsp/requests.jsp">Letzte Steuerbefehle</a>
 
 <h2>Sensoren im Raum <%= (roomLabel != null && !roomLabel.isBlank()) ? roomLabel : "#" + roomId %></h2>
 
@@ -74,5 +81,18 @@
   </tr>
 <% } %>
 </table>
+
+  </div>
+
+  <!-- Untere Navigation - Ganz unten auf der Webseite -->
+  <nav class="bottom-nav">
+    <a href="<%=request.getContextPath()%>/rooms?floorId=<%= fParam %>&buildingId=<%= bParam %>">🏠 Zurück zu Räumen</a>
+    <a href="<%=request.getContextPath()%>/jsp/test-sensors.jsp">🧪 Test-Version</a>
+    <span>| Smart Office Management System v1.0</span>
+  </nav>
+
+  <!-- Padding für fixed Navigation -->
+  <div class="nav-padding"></div>
+
 </body>
 </html>

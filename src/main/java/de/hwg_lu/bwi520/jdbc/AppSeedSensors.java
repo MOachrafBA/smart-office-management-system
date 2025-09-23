@@ -3,6 +3,7 @@ package de.hwg_lu.bwi520.jdbc;
 import java.sql.*;
 import java.util.Collections;
 
+//Diese Klasse ist ein Datenbank-Seeding-Tool - sie befüllt die Datenbank mit Beispieldaten für Sensoren und deren Werte.
 public class AppSeedSensors {
 
   Connection dbConn;
@@ -16,7 +17,7 @@ public class AppSeedSensors {
     // app.seedRoom(10);
 
     // 2) Räume per Code (z. B. 1-CR2, 1-F1)
-    app.seedByRoomCode("1-CR2", "1-F1");
+    //app.seedByRoomCode("1-CR2", "1-F1");
 
     // 3) Alle Räume einer Etage
     // app.seedByFloor(3);

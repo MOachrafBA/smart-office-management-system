@@ -1,11 +1,77 @@
 @charset "UTF-8";
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:24px}
-h2{margin:0 0 16px}
-.tbl{border-collapse:collapse;width:100%;max-width:1000px;background:#fff}
-.tbl th,.tbl td{border:1px solid #ddd;padding:8px 10px;text-align:left}
-.tbl th{background:#f5f5f5}
-.val{font-variant-numeric:tabular-nums}
-.inline{display:flex;gap:8px;align-items:center;margin:0}
-input[type="number"]{width:100px}
-input[type="range"]{width:160px}
-.back{display:inline-block;margin:0 0 12px 0;text-decoration:none}
+
+/* Grundlegende Body-Styles für die gesamte Anwendung */
+body {
+    /* Moderne System-Schriftarten für bessere Lesbarkeit */
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    /* Außenabstand für bessere Optik */
+    margin: 24px;
+}
+
+/* Überschriften der 2. Ebene (Hauptüberschriften) */
+h2 {
+    /* Abstand nach unten für bessere Struktur */
+    margin: 0 0 16px;
+}
+
+/* Tabellen-Styling für Sensoren-Übersicht */
+.tbl {
+    /* Rahmen zusammenführen für saubere Optik */
+    border-collapse: collapse;
+    /* Volle Breite mit maximaler Begrenzung */
+    width: 100%;
+    max-width: 1000px;
+    /* Weißer Hintergrund für bessere Lesbarkeit */
+    background: #fff;
+}
+
+/* Tabellen-Header und -Zellen */
+.tbl th, .tbl td {
+    /* Dünne graue Rahmen für Struktur */
+    border: 1px solid #ddd;
+    /* Innenabstand für bessere Lesbarkeit */
+    padding: 8px 10px;
+    /* Linksbündige Ausrichtung */
+    text-align: left;
+}
+
+/* Tabellen-Header mit grauem Hintergrund */
+.tbl th {
+    /* Leichter grauer Hintergrund für Header */
+    background: #f5f5f5;
+}
+
+/* Numerische Werte mit einheitlicher Breite (Sensoren-Werte) */
+.val {
+    /* Tabellenzahlen für bessere Ausrichtung */
+    font-variant-numeric: tabular-nums;
+}
+
+/* Inline-Formulare für Sensor-Steuerung */
+.inline {
+    /* Flexbox für horizontale Anordnung */
+    display: flex;
+    /* Abstand zwischen Elementen */
+    gap: 8px;
+    /* Vertikale Zentrierung */
+    align-items: center;
+    /* Keine Außenabstände */
+    margin: 0;
+}
+
+/* Number-Input-Felder für Temperatur, etc. */
+input[type="number"] {
+    /* Feste Breite für einheitliche Optik */
+    width: 100px;
+}
+
+/* Range-Slider für Licht/Jalousien (0-100%) */
+input[type="range"] {
+    /* Breitere Slider für bessere Bedienbarkeit */
+    width: 160px;
+}
+
+/* Zurück-Buttons für Navigation - ENTFERNT (redundant mit unterer Navigation) */
+
+/* ========== SMART OFFICE LAYOUT ========== */
+/* Buildings-spezifische Styles sind jetzt in buildings.css */

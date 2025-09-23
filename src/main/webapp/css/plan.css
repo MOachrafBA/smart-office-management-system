@@ -1,49 +1,87 @@
-/* Kartenlayout (ohne SVG) */
-.room-grid{
+/* plan.css – Styles für Raum-Grid-Layout (Kartenansicht) */
+
+/* Grid-Container für Raum-Karten */
+.room-grid {
+  /* CSS Grid für responsive Karten-Layout */
   display: grid;
+  /* 2 Spalten mit minimaler Breite von 320px */
   grid-template-columns: repeat(2, minmax(320px, 1fr));
+  /* Abstand zwischen Karten */
   gap: 24px;
+  /* Heller Hintergrund für bessere Optik */
   background: #f6f7f8;
+  /* Abgerundete Ecken für moderne Optik */
   border-radius: 14px;
+  /* Innenabstand für bessere Struktur */
   padding: 18px;
+  /* Abstand nach unten für Trennung */
   margin-bottom: 18px;
 }
 
-/* 1-spaltig auf kleineren Screens */
-@media (max-width: 900px){
-  .room-grid{ grid-template-columns: 1fr; }
+/* Responsive Design: 1-spaltig auf kleineren Bildschirmen */
+@media (max-width: 900px) {
+  .room-grid { 
+    /* Nur eine Spalte auf mobilen Geräten */
+    grid-template-columns: 1fr; 
+  }
 }
 
-.room-card{
+/* Einzelne Raum-Karte */
+.room-card {
+  /* Relative Positionierung für absolute Titel */
   position: relative;
+  /* Block-Element für bessere Kontrolle */
   display: block;
+  /* Überlauf verstecken für saubere Optik */
   overflow: hidden;
+  /* Abgerundete Ecken für moderne Optik */
   border-radius: 12px;
+  /* Schatten für Tiefeneffekt */
   box-shadow: 0 4px 20px rgba(0,0,0,.06);
+  /* Sanfte Übergänge für bessere UX */
   transition: transform .15s ease, box-shadow .15s ease;
-  text-decoration: none; /* Link-Unterstreichung weg */
+  /* Keine Unterstreichung für saubere Optik */
+  text-decoration: none;
 }
 
-.room-card:hover{
+/* Hover-Effekt für Raum-Karten */
+.room-card:hover {
+  /* Leichte Bewegung nach oben */
   transform: translateY(-2px);
+  /* Stärkerer Schatten beim Hover */
   box-shadow: 0 6px 26px rgba(0,0,0,.10);
 }
 
-.room-card img{
+/* Raum-Bilder in den Karten */
+.room-card img {
+  /* Volle Breite der Karte */
   width: 100%;
-  /* einheitliches Seitenverhältnis, Bild wird sauber beschnitten */
+  /* Einheitliches Seitenverhältnis (16:10) */
   aspect-ratio: 16 / 10;
+  /* Bild wird sauber beschnitten ohne Verzerrung */
   object-fit: cover;
+  /* Block-Element für bessere Kontrolle */
   display: block;
 }
 
-.room-title{
+/* Titel-Labels auf den Raum-Karten */
+.room-title {
+  /* Absolute Positionierung über dem Bild */
   position: absolute;
-  left: 12px; top: 12px;
+  /* 12px Abstand von links */
+  left: 12px;
+  /* 12px Abstand von oben */
+  top: 12px;
+  /* Transparenter weißer Hintergrund */
   background: rgba(255,255,255,.85);
+  /* Innenabstand für bessere Lesbarkeit */
   padding: .35rem .6rem;
+  /* Abgerundete Ecken für moderne Optik */
   border-radius: .6rem;
+  /* Fette Schrift mit System-Fonts */
   font: 600 16px/1.2 system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  /* Blaue Schriftfarbe für Kontrast */
   color: #0b4b73;
-  pointer-events: none; /* Label selbst nicht klickbar, nur die Karte */
+  /* Label selbst nicht klickbar, nur die Karte */
+  pointer-events: none;
 }

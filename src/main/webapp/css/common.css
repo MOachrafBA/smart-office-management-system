@@ -1,0 +1,61 @@
+/* common.css - Einheitliche Styles für alle Seiten */
+
+/* Banner für alle Seiten */
+.banner {
+    background: #0b4b73;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.banner h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.banner p {
+    margin: 5px 0 0 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Hauptinhalt Container */
+.main-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Untere Navigation */
+.bottom-nav {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-top: 30px;
+    text-align: center;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.bottom-nav a {
+    margin: 0 10px;
+    color: #0b4b73;
+    text-decoration: none;
+}
+
+.bottom-nav a:hover {
+    text-decoration: underline;
+}
+
+.bottom-nav span {
+    color: #666;
+}
+
+/* Padding für fixed Navigation */
+.nav-padding {
+    height: 80px;
+}

@@ -1,39 +1,119 @@
-/* building.css – Styles nur für die Gebäude-/Etagen-Ansicht */
+/* building.css - Spezifische Styles für die Building-Seite */
+
+/* Banner für alle Seiten */
+.banner {
+    background: #0b4b73;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.banner h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.banner p {
+    margin: 5px 0 0 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Hauptinhalt Container */
+.main-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Container für das Gebäude-Bild mit interaktiven Hotspots */
 .img-wrap {
-  position: relative;
-  max-width: 1100px;
+    /* Relative Positionierung für absolute Hotspots */
+    position: relative;
+    /* Maximale Breite für responsive Design */
+    max-width: 1100px;
 }
+
+/* Gebäude-Bild */
 .img-wrap img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
+    /* Volle Breite des Containers */
+    width: 100%;
+    /* Höhe automatisch anpassen */
+    height: auto;
+    /* Abrundung der Ecken */
+    border-radius: 8px;
+    /* Schatten für Tiefe */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* klickbare Etagen-Bänder */
+/* Interaktive Hotspots für Etagen */
 .hotspot {
-  position: absolute;
-  left: 3%;
-  right: 3%;
-  border: 3px solid #0b4b73;
-  border-radius: 10px;
-  background: rgba(13,110,253,.15);
-  display: block;
-  text-decoration: none;
-  transition: background .15s ease;
+    /* Absolute Positionierung über dem Bild */
+    position: absolute;
+    /* Volle Breite des Containers */
+    width: 100%;
+    /* Transparenter Hintergrund */
+    background: rgba(11, 75, 115, 0.1);
+    /* Hover-Effekt */
+    transition: background-color 0.3s ease;
+    /* Cursor zeigt Klickbarkeit */
+    cursor: pointer;
+    /* Keine Unterstreichung */
+    text-decoration: none;
+    /* Flexbox für Zentrierung */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+/* Hover-Effekt für Hotspots */
 .hotspot:hover {
-  background: rgba(13,110,253,.28);
+    /* Dunklerer Hintergrund beim Hover */
+    background: rgba(11, 75, 115, 0.2);
 }
 
+/* Label für Hotspots */
 .hs-label {
-  position: absolute;
-  left: 6%;
-  top: 6%;
-  font-weight: 600;
-  background: rgba(255,255,255,.85);
-  padding: .2rem .5rem;
-  border-radius: .5rem;
+    /* Weiße Schrift */
+    color: white;
+    /* Fette Schrift */
+    font-weight: bold;
+    /* Schatten für bessere Lesbarkeit */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    /* Schriftgröße */
+    font-size: 1.1rem;
 }
 
-.back { margin-bottom: 12px; display: inline-block; }
+/* Untere Navigation */
+.bottom-nav {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-top: 30px;
+    text-align: center;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.bottom-nav a {
+    margin: 0 10px;
+    color: #0b4b73;
+    text-decoration: none;
+}
+
+.bottom-nav a:hover {
+    text-decoration: underline;
+}
+
+.bottom-nav span {
+    color: #666;
+}
+
+/* Padding für fixed Navigation */
+.nav-padding {
+    height: 80px;
+}
