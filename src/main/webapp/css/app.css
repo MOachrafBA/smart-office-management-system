@@ -75,3 +75,83 @@ input[type="range"] {
 
 /* ========== SMART OFFICE LAYOUT ========== */
 /* Buildings-spezifische Styles sind jetzt in buildings.css */
+
+/* ========== BANNER NAVIGATION STYLING ========== */
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.logout-btn, .login-btn, .register-btn, .home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.logout-btn {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    border-color: rgba(231, 76, 60, 0.3);
+}
+
+.logout-btn:hover {
+    background: #e74c3c;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.login-btn {
+    background: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+    border-color: rgba(52, 152, 219, 0.3);
+}
+
+.login-btn:hover {
+    background: #3498db;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.register-btn {
+    background: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+    border-color: rgba(46, 204, 113, 0.3);
+}
+
+.register-btn:hover {
+    background: #2ecc71;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.home-btn {
+    background: rgba(155, 89, 182, 0.1);
+    color: #9b59b6;
+    border-color: rgba(155, 89, 182, 0.3);
+}
+
+.home-btn:hover {
+    background: #9b59b6;
+    color: white;
+    transform: translateY(-2px);
+}
