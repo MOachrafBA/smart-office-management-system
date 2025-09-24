@@ -1,5 +1,10 @@
 package de.hwg_lu.bwi520.beans;
 
+import de.hwg_lu.bwi520.classes.SensorDao;
+import de.hwg_lu.bwi520.beans.SensorRow;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  * SmartOfficeBean - Haupt-Controller für die Smart Office Anwendung
  * 
@@ -223,5 +228,47 @@ public class SmartOfficeBean {
             return "<meta http-equiv=\"refresh\" content=\"0; URL=LoginAppl.jsp\">";
         }
         return "";
+    }
+    
+    // ========== SENSOR MANAGEMENT ==========
+    
+    /**
+     * Lädt alle Sensoren für den aktuell ausgewählten Raum
+     * @return Liste der Sensoren oder leere Liste
+     */
+    public List<SensorRow> getSensorsForCurrentRoom() {
+        if (!hasRoomSelected()) {
+            return new java.util.ArrayList<>();
+        }
+        
+        try {
+            SensorDao sensorDao = new SensorDao();
+            int roomId = Integer.parseInt(currentRoom);
+            return sensorDao.byRoom(roomId);
+        } catch (SQLException | NumberFormatException e) {
+            System.err.println("Fehler beim Laden der Sensoren: " + e.getMessage());
+            return new java.util.ArrayList<>();
+        }
+    }
+    
+    /**
+     * Setzt einen Sensor-Wert
+     * @param sensorId ID des Sensors
+     * @param value Neuer Wert
+     * @return true wenn erfolgreich, false sonst
+     */
+    public boolean setSensorValue(int sensorId, double value) {
+        try {
+            SensorDao sensorDao = new SensorDao();
+            sensorDao.insertValue(sensorId, value);
+            
+            // Steueranfrage mit Benutzer-Information speichern
+            sensorDao.insertControlRequest(sensorId, value, currentUser);
+            
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Fehler beim Setzen des Sensor-Werts: " + e.getMessage());
+            return false;
+        }
     }
 }

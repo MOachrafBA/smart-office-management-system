@@ -4,8 +4,9 @@
 body {
     /* Moderne System-Schriftarten für bessere Lesbarkeit */
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    /* Außenabstand für bessere Optik */
-    margin: 24px;
+    /* Kein Außenabstand für Banner bis zum Rand */
+    margin: 0;
+    padding: 0;
 }
 
 /* Überschriften der 2. Ebene (Hauptüberschriften) */

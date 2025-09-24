@@ -6,6 +6,7 @@
 %>
 <jsp:useBean id="mySmartOffice" class="de.hwg_lu.bwi520.beans.SmartOfficeBean" scope="session" />
 <jsp:useBean id="myBuilding" class="de.hwg_lu.bwi520.beans.BuildingBean" scope="session" />
+<jsp:useBean id="myRoom" class="de.hwg_lu.bwi520.beans.RoomBean" scope="session" />
 <jsp:useBean id="myMessage" class="de.hwg_lu.bwi520.beans.MessageBean" scope="session" />
 
 <%
@@ -15,6 +16,7 @@ String btnRefresh = request.getParameter("btnRefresh");
 String btnSet = request.getParameter("btnSet");
 String sensorId = request.getParameter("sensorId");
 String desiredValue = request.getParameter("desiredValue");
+String roomId = request.getParameter("roomId");
 String roomName = request.getParameter("roomName");
 
 // ========== NULL-CHECK ==========
@@ -23,34 +25,62 @@ if (btnRefresh == null) btnRefresh = "";
 if (btnSet == null) btnSet = "";
 if (sensorId == null) sensorId = "";
 if (desiredValue == null) desiredValue = "";
+if (roomId == null) roomId = "";
 if (roomName == null) roomName = "";
 
 // ========== RAUM AUSWÄHLEN ==========
-if (!roomName.isEmpty()) {
-    mySmartOffice.setCurrentRoom(roomName);
+if (!roomId.isEmpty() && btnSet.isEmpty()) {
+    try {
+        // Raum in SmartOfficeBean setzen
+        mySmartOffice.setCurrentRoom(roomId);
+        
+        // Raum in RoomBean setzen für Namen-Anzeige
+        myRoom.selectRoom(roomId);
+        
+        // Weiterleitung zur Sensoren-Ansicht
+        response.sendRedirect("SensorsView.jsp");
+        return;
+    } catch (Exception e) {
+        myMessage.setAnyError("Fehler beim Laden des Raumes: " + e.getMessage());
+        response.sendRedirect("RoomsView.jsp");
+        return;
+    }
 }
 
 // ========== AKTIONSWEICHE ==========
 try {
     if (btnSet.equals("Setzen")) {
         // ========== SENSOR WERT SETZEN ==========
+        System.err.println("DEBUG: Sensor-Steuerung - sensorId: " + sensorId + ", desiredValue: " + desiredValue);
+        
         if (sensorId.isEmpty() || desiredValue.isEmpty()) {
-            myMessage.setAnyError("Sensor-ID oder Wert fehlt!");
-            response.sendRedirect("SensorsView.jsp");
+            String errorMessage = "Sensor-ID oder Wert fehlt! sensorId=" + sensorId + ", desiredValue=" + desiredValue;
+            response.sendRedirect("SensorsView.jsp?message=" + java.net.URLEncoder.encode(errorMessage, "UTF-8") + "&type=error");
             return;
         }
         
-        // Sensor-Steuerung implementieren
+        // Echte Sensor-Steuerung implementieren
         try {
-            // Hier würde die echte Sensor-Steuerung implementiert werden
-            // Für Demo: Erfolgsnachricht mit den Werten
-            String successMessage = "Sensor " + sensorId + " auf " + desiredValue + " gesetzt!";
-            myMessage.setAnyError(successMessage); // Verwende setAnyError für Demo
-            response.sendRedirect("SensorsView.jsp");
+            int sensorIdInt = Integer.parseInt(sensorId);
+            double valueDouble = Double.parseDouble(desiredValue);
             
+            // Sensor-Wert in der Datenbank setzen
+            boolean success = mySmartOffice.setSensorValue(sensorIdInt, valueDouble);
+            
+            if (success) {
+                String successMessage = "Sensor " + sensorId + " auf " + desiredValue + " gesetzt!";
+                response.sendRedirect("SensorsView.jsp?message=" + java.net.URLEncoder.encode(successMessage, "UTF-8") + "&type=success");
+            } else {
+                String errorMessage = "Fehler beim Setzen des Sensor-Werts!";
+                response.sendRedirect("SensorsView.jsp?message=" + java.net.URLEncoder.encode(errorMessage, "UTF-8") + "&type=error");
+            }
+            
+        } catch (NumberFormatException e) {
+            String errorMessage = "Ungültige Sensor-ID oder Wert!";
+            response.sendRedirect("SensorsView.jsp?message=" + java.net.URLEncoder.encode(errorMessage, "UTF-8") + "&type=error");
         } catch (Exception e) {
-            myMessage.setAnyError("Fehler beim Setzen des Sensors: " + e.getMessage());
-            response.sendRedirect("SensorsView.jsp");
+            String errorMessage = "Fehler beim Setzen des Sensors: " + e.getMessage();
+            response.sendRedirect("SensorsView.jsp?message=" + java.net.URLEncoder.encode(errorMessage, "UTF-8") + "&type=error");
         }
         
     } else if (btnBack.equals("Zurück zu Räumen")) {

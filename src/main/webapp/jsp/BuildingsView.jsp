@@ -7,6 +7,8 @@
     <title>Smart Office - Gebäude</title>
     <link rel="stylesheet" href="/BWI520/css/app.css">
     <link rel="stylesheet" href="/BWI520/css/buildings.css">
+    <link rel="stylesheet" href="/BWI520/css/common.css">
+    <link rel="stylesheet" href="/BWI520/css/messages.css">
 </head>
 <body>
     <%-- Beans einbinden --%>

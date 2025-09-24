@@ -42,4 +42,14 @@ public class SensorDao {
       ps.setInt(1,sensorId); ps.setDouble(2,value); ps.executeUpdate();
     }
   }
+  
+  public void insertControlRequest(int sensorId, double value, String username) throws SQLException {
+    String sql = "INSERT INTO control_request(sensor_id, requested_value, username) VALUES (?, ?, ?)";
+    try (PreparedStatement ps = Db.get().prepareStatement(sql)) {
+      ps.setInt(1, sensorId);
+      ps.setDouble(2, value);
+      ps.setString(3, username);
+      ps.executeUpdate();
+    }
+  }
 }

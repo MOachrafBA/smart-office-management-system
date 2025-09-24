@@ -41,6 +41,7 @@ try {
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/app.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/plan.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/messages.css">
 </head>
 <body>
 

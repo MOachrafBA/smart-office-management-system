@@ -1,12 +1,16 @@
 /* building.css - Spezifische Styles für die Building-Seite */
 
-/* Banner für alle Seiten */
+/* Banner für alle Seiten - überschreibt common.css */
 .banner {
     background: #0b4b73;
     color: white;
-    padding: 10px;
+    padding: 20px 0;
+    margin: 0;
     text-align: center;
-    margin-bottom: 20px;
+    width: 100%;
+    position: relative;
+    left: 0;
+    right: 0;
 }
 
 .banner h1 {
@@ -65,6 +69,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* Spezifische Höhe für Etagen */
+    height: 33.33%;
+    /* Z-Index für Überlagerung */
+    z-index: 10;
 }
 
 /* Hover-Effekt für Hotspots */
@@ -73,16 +81,26 @@
     background: rgba(11, 75, 115, 0.2);
 }
 
-/* Label für Hotspots */
+/* Label für Hotspots - einheitlich mit room-title */
 .hs-label {
-    /* Weiße Schrift */
-    color: white;
-    /* Fette Schrift */
-    font-weight: bold;
-    /* Schatten für bessere Lesbarkeit */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-    /* Schriftgröße */
-    font-size: 1.1rem;
+    /* Absolute Positionierung über dem Bild */
+    position: absolute;
+    /* 12px Abstand von links */
+    left: 12px;
+    /* 12px Abstand von oben */
+    top: 12px;
+    /* Transparenter weißer Hintergrund */
+    background: rgba(255,255,255,.85);
+    /* Innenabstand für bessere Lesbarkeit */
+    padding: .35rem .6rem;
+    /* Abgerundete Ecken für moderne Optik */
+    border-radius: .6rem;
+    /* Fette Schrift mit System-Fonts */
+    font: 600 16px/1.2 system-ui, Segoe UI, Roboto, Arial, sans-serif;
+    /* Blaue Schriftfarbe für Kontrast */
+    color: #0b4b73;
+    /* Label selbst nicht klickbar, nur der Hotspot */
+    pointer-events: none;
 }
 
 /* Untere Navigation */

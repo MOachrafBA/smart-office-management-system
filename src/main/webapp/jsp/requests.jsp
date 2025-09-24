@@ -5,9 +5,9 @@
 <head>
   <title>Letzte Steuerbefehle</title>
   <link rel="stylesheet" href="<%=request.getContextPath()%>/css/app.css">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common.css">
 </head>
 <body>
-<a class="back" href="<%=request.getContextPath()%>/buildings">&laquo; zurück</a>
 <h2>Letzte Steuerbefehle</h2>
 
 <table class="tbl">
@@ -15,11 +15,12 @@
     <th>ID</th>
     <th>Sensor</th>
     <th>Wert</th>
+    <th>Benutzer</th>
     <th>Angefordert</th>
   </tr>
 <%
   String sql =
-    "SELECT cr.id, cr.requested_value, cr.created_at, " +
+    "SELECT cr.id, cr.requested_value, cr.created_at, cr.username, " +
     "       s.id AS sensor_id, s.label, st.key " +
     "FROM control_request cr " +
     "JOIN sensor s       ON s.id = cr.sensor_id " +
@@ -36,6 +37,7 @@
     <td><%= rs.getLong("id") %></td>
     <td><%= rs.getInt("sensor_id") %> — <%= rs.getString("label") %> (<%= rs.getString("key") %>)</td>
     <td><%= rs.getObject("requested_value") %></td>
+    <td><%= rs.getString("username") != null ? rs.getString("username") : "Unbekannt" %></td>
     <td><%= rs.getTimestamp("created_at") %></td>
   </tr>
 <%
@@ -45,5 +47,16 @@
   }
 %>
 </table>
+
+<!-- Untere Navigation -->
+<nav class="bottom-nav">
+    <a href="<%=request.getContextPath()%>/jsp/SensorsView.jsp">🏠 Zurück zu Sensoren</a>
+    <a href="<%=request.getContextPath()%>/jsp/RoomsView.jsp">🏢 Zurück zu Räumen</a>
+    <span>| Smart Office Management System v1.0</span>
+</nav>
+
+<!-- Padding für fixed Navigation -->
+<div class="nav-padding"></div>
+
 </body>
 </html>

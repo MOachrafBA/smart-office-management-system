@@ -203,6 +203,16 @@ public class MessageBean {
         this.messageClass = "message-error";
     }
     
+    /**
+     * Setzt allgemeine Erfolgsnachricht
+     * @param success Erfolgsbeschreibung
+     */
+    public void setAnySuccess(String success) {
+        this.message = success;
+        this.messageType = "success";
+        this.messageClass = "message-success";
+    }
+    
     // ========== WARNUNGSNACHRICHTEN ==========
     
     /**
