@@ -112,8 +112,8 @@ BWI520/
 
 1. **Repository klonen**
 ```bash
-git clone https://github.com/your-username/smart-office-management.git
-cd smart-office-management
+git clone https://github.com/MOachrafBA/smart-office-management-system.git
+cd smart-office-management-system
 ```
 
 2. **Datenbank einrichten**
