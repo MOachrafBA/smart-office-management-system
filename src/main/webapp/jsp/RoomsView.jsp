@@ -40,7 +40,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/app.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/plan.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/rooms.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/messages.css">
 </head>
 <body>
@@ -77,7 +77,6 @@ try {
     <!-- Untere Navigation -->
     <nav class="bottom-nav">
         <a href="<%=request.getContextPath()%>/jsp/BuildingView.jsp">🏠 Zurück zu Etagen</a>
-        <a href="<%=request.getContextPath()%>/jsp/test-rooms.jsp">🧪 Test-Version</a>
         <span>| Smart Office Management System v1.0</span>
     </nav>
 

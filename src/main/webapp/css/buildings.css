@@ -1,35 +1,7 @@
 /* buildings.css - Spezifische Styles für die Buildings-Seite */
 
-/* Banner für alle Seiten - überschreibt common.css */
-.banner {
-    background: #0b4b73;
-    color: white;
-    padding: 20px 0;
-    margin: 0;
-    text-align: center;
-    width: 100%;
-    position: relative;
-    left: 0;
-    right: 0;
-}
-
-.banner h1 {
-    margin: 0;
-    font-size: 1.8rem;
-}
-
-.banner p {
-    margin: 5px 0 0 0;
-    font-size: 0.9rem;
-    opacity: 0.9;
-}
-
-/* Hauptinhalt Container */
-.main-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-}
+/* buildings.css - Spezifische Styles für die Buildings-Seite */
+/* Banner und Main-Content werden von common.css bereitgestellt */
 
 /* Gebäude-Liste */
 .building-list {
@@ -86,35 +58,4 @@
     border-left-color: #9c27b0;
 }
 
-/* Untere Navigation */
-.bottom-nav {
-    background: #f8f9fa;
-    padding: 15px;
-    margin-top: 30px;
-    text-align: center;
-    border-radius: 5px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-}
-
-.bottom-nav a {
-    margin: 0 10px;
-    color: #0b4b73;
-    text-decoration: none;
-}
-
-.bottom-nav a:hover {
-    text-decoration: underline;
-}
-
-.bottom-nav span {
-    color: #666;
-}
-
-/* Padding für fixed Navigation */
-.nav-padding {
-    height: 80px;
-}
+/* Bottom-Navigation wird von common.css bereitgestellt */

@@ -58,7 +58,7 @@ try {
 
         <!-- Gebäude-Bild mit Hotspots -->
         <div class="img-wrap">
-            <img src="<%=request.getContextPath()%>/img/building.png" alt="Gebäude">
+            <img src="<%=request.getContextPath()%>/img/building.png" alt="Gebäude"> <!-- context = http://localhost:8080/BWI520 -->
             <!-- Etagen-Hotspots (statisch für Demo) -->
             <a class="hotspot" style="top:66%;height:18%" href="<%=request.getContextPath()%>/jsp/RoomsAppl.jsp?floorId=1&buildingId=<jsp:getProperty name="mySmartOffice" property="currentBuilding" />" title="Erdgeschoss">
                 <span class="hs-label">Erdgeschoss</span>
@@ -75,7 +75,6 @@ try {
     <!-- Untere Navigation -->
     <nav class="bottom-nav">
         <a href="<%=request.getContextPath()%>/jsp/BuildingsView.jsp">🏠 Zurück zu Gebäuden</a>
-        <a href="<%=request.getContextPath()%>/jsp/test-building.jsp">🧪 Test-Version</a>
         <span>| Smart Office Management System v1.0</span>
     </nav>
 

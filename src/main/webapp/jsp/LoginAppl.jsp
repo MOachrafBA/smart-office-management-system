@@ -33,7 +33,7 @@ try {
         }
         
         try {
-            // Datenbankanmeldung prÃ¼fen
+            // Datenbankanmeldung prüfen
             UserDao userDao = new UserDao();
             User authenticatedUser = userDao.authenticate(username, password);
             

@@ -34,7 +34,7 @@ if (!roomId.isEmpty() && btnSet.isEmpty()) {
         // Raum in SmartOfficeBean setzen
         mySmartOffice.setCurrentRoom(roomId);
         
-        // Raum in RoomBean setzen fÃ¼r Namen-Anzeige
+        // Raum in RoomBean setzen fürr Namen-Anzeige
         myRoom.selectRoom(roomId);
         
         // Weiterleitung zur Sensoren-Ansicht

@@ -207,6 +207,7 @@ public class BuildingBean {
         String[] icons = {"🏢", "🏬", "🔬", "🏭", "🏛️"};
         
         for (Building building : buildings) {
+        	//Modulo-Operator: % sorgt für zyklische Wiederholung
             String colorClass = colorClasses[colorIndex % colorClasses.length];
             String icon = icons[colorIndex % icons.length];
             colorIndex++;

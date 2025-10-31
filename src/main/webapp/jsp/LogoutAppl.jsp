@@ -7,9 +7,9 @@
 <jsp:useBean id="myMessage" class="de.hwg_lu.bwi520.beans.MessageBean" scope="session" />
 
 <%
-// ========== LOGOUT DURCHFÃœHREN ==========
+// ========== LOGOUT DURCHFÜHREN ==========
 try {
-    // SmartOffice Bean zurÃ¼cksetzen
+    // SmartOffice Bean zurücksetzen
     mySmartOffice.logout();
     
     // Keine Abmelde-Nachricht anzeigen

@@ -1,7 +1,8 @@
 package de.hwg_lu.bwi520.classes;
 
 import de.hwg_lu.bwi520.beans.User;
-import de.hwg_lu.bwi520.jdbc.Db;
+import de.hwg_lu.bwi520.jdbc.PostgreSQLAccess;
+import de.hwg_lu.bwi520.jdbc.NoConnectionException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +29,11 @@ public class UserDao {
         String sql = "SELECT id, username, email, password_hash, first_name, last_name, role, is_active, created_at, last_login " +
                      "FROM bwi520.users WHERE username = ? AND is_active = true";
         
-        try (PreparedStatement ps = Db.get().prepareStatement(sql)) {
+        try (PreparedStatement ps = new PostgreSQLAccess().getConnection().prepareStatement(sql)) {
             ps.setString(1, username);
             
             try (ResultSet rs = ps.executeQuery()) {
+                // Benutzer existiert und ist aktiv
                 if (rs.next()) {
                     User user = new User();
                     user.setId(rs.getInt("id"));
@@ -76,7 +78,7 @@ public class UserDao {
         String sql = "INSERT INTO bwi520.users (username, email, password_hash, first_name, last_name, role) " +
                      "VALUES (?, ?, ?, ?, ?, ?)";
         
-        try (PreparedStatement ps = Db.get().prepareStatement(sql)) {
+        try (PreparedStatement ps = new PostgreSQLAccess().getConnection().prepareStatement(sql)) {
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getEmail());
             ps.setString(3, user.getPasswordHash()); // In echter Anwendung: gehashtes Passwort
@@ -98,7 +100,7 @@ public class UserDao {
     public boolean usernameExists(String username) throws SQLException {
         String sql = "SELECT COUNT(*) FROM bwi520.users WHERE username = ?";
         
-        try (PreparedStatement ps = Db.get().prepareStatement(sql)) {
+        try (PreparedStatement ps = new PostgreSQLAccess().getConnection().prepareStatement(sql)) {
             ps.setString(1, username);
             
             try (ResultSet rs = ps.executeQuery()) {
@@ -119,7 +121,7 @@ public class UserDao {
     public boolean emailExists(String email) throws SQLException {
         String sql = "SELECT COUNT(*) FROM bwi520.users WHERE email = ?";
         
-        try (PreparedStatement ps = Db.get().prepareStatement(sql)) {
+        try (PreparedStatement ps = new PostgreSQLAccess().getConnection().prepareStatement(sql)) {
             ps.setString(1, email);
             
             try (ResultSet rs = ps.executeQuery()) {
@@ -139,7 +141,7 @@ public class UserDao {
     public void updateLastLogin(int userId) throws SQLException {
         String sql = "UPDATE bwi520.users SET last_login = CURRENT_TIMESTAMP WHERE id = ?";
         
-        try (PreparedStatement ps = Db.get().prepareStatement(sql)) {
+        try (PreparedStatement ps = new PostgreSQLAccess().getConnection().prepareStatement(sql)) {
             ps.setInt(1, userId);
             ps.executeUpdate();
         }
@@ -156,7 +158,7 @@ public class UserDao {
         
         List<User> users = new ArrayList<>();
         
-        try (PreparedStatement ps = Db.get().prepareStatement(sql);
+        try (PreparedStatement ps = new PostgreSQLAccess().getConnection().prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             
             while (rs.next()) {
@@ -188,7 +190,7 @@ public class UserDao {
         String sql = "SELECT id, username, email, first_name, last_name, role, is_active, created_at, last_login " +
                      "FROM bwi520.users WHERE id = ?";
         
-        try (PreparedStatement ps = Db.get().prepareStatement(sql)) {
+        try (PreparedStatement ps = new PostgreSQLAccess().getConnection().prepareStatement(sql)) {
             ps.setInt(1, userId);
             
             try (ResultSet rs = ps.executeQuery()) {

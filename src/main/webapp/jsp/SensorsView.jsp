@@ -27,6 +27,7 @@ try {
     <title>Smart Office - Sensoren</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/app.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/sensors.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/messages.css">
     <script src="<%=request.getContextPath()%>/js/auto-refresh.js"></script>
 </head>
@@ -129,7 +130,6 @@ try {
     <nav class="bottom-nav">
         <a href="<%=request.getContextPath()%>/jsp/RoomsView.jsp">🏠 Zurück zu Räumen</a>
         <a href="<%=request.getContextPath()%>/jsp/requests.jsp">📋 Steuerbefehle</a>
-        <a href="<%=request.getContextPath()%>/jsp/test-sensors.jsp">🧪 Test-Version</a>
         <span>| Smart Office Management System v1.0</span>
     </nav>
 
@@ -156,8 +156,10 @@ try {
         
         // Prüfe URL-Parameter für Nachrichten
         window.onload = function() {
+            // JavaScript URLSearchParams dekodiert automatisch
             const urlParams = new URLSearchParams(window.location.search);
             const message = urlParams.get('message');
+            // "Sensor%201%20auf%2080%20gesetzt%21" wird zu "Sensor 1 auf 80 gesetzt!"
             const type = urlParams.get('type');
             
             if (message) {

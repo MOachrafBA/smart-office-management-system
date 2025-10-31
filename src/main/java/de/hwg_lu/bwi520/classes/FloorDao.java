@@ -1,10 +1,12 @@
 package de.hwg_lu.bwi520.classes;
-import de.hwg_lu.bwi520.beans.Floor; import de.hwg_lu.bwi520.jdbc.Db;
+import de.hwg_lu.bwi520.beans.Floor; 
+import de.hwg_lu.bwi520.jdbc.PostgreSQLAccess;
+import de.hwg_lu.bwi520.jdbc.NoConnectionException;
 import java.sql.*; import java.util.*;
 public class FloorDao {
   public List<Floor> byBuilding(int buildingId) throws SQLException {
     String sql="SELECT id,building_id,name,index_no FROM floor WHERE building_id=? ORDER BY index_no";
-    try (PreparedStatement ps=Db.get().prepareStatement(sql)) {
+    try (PreparedStatement ps=new PostgreSQLAccess().getConnection().prepareStatement(sql)) {
       // SQL-Abfrage, um alle Etagen des Gebäudes aus der Datenbank zu holen
       ps.setInt(1, buildingId); ResultSet rs=ps.executeQuery();
       // Ergebnis in Liste umwandeln

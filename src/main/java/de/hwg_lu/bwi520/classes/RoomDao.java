@@ -1,7 +1,8 @@
 package de.hwg_lu.bwi520.classes;
 
 import de.hwg_lu.bwi520.beans.Room;
-import de.hwg_lu.bwi520.jdbc.Db;
+import de.hwg_lu.bwi520.jdbc.PostgreSQLAccess;
+import de.hwg_lu.bwi520.jdbc.NoConnectionException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,7 +25,7 @@ public class RoomDao {
 
         List<Room> rooms = new ArrayList<>();
 
-        try (PreparedStatement ps = Db.get().prepareStatement(sql)) {
+        try (PreparedStatement ps = new PostgreSQLAccess().getConnection().prepareStatement(sql)) {
             ps.setInt(1, floorId);
 
             try (ResultSet rs = ps.executeQuery()) {
@@ -45,7 +46,7 @@ public class RoomDao {
     public Room findById(int roomId) throws SQLException {
         String sql = "SELECT id, floor_id, code, name FROM bwi520.room WHERE id = ?";
 
-        try (PreparedStatement ps = Db.get().prepareStatement(sql)) {
+        try (PreparedStatement ps = new PostgreSQLAccess().getConnection().prepareStatement(sql)) {
             ps.setInt(1, roomId);
 
             try (ResultSet rs = ps.executeQuery()) {
@@ -67,7 +68,7 @@ public class RoomDao {
 
         List<Room> rooms = new ArrayList<>();
 
-        try (PreparedStatement ps = Db.get().prepareStatement(sql);
+        try (PreparedStatement ps = new PostgreSQLAccess().getConnection().prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 rooms.add(mapResultSetToRoom(rs));

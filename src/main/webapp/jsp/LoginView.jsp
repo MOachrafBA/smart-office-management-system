@@ -11,9 +11,9 @@
 <html>
 <head>
     <title>Smart Office - Anmeldung</title>
-    <link rel="stylesheet" href="/BWI520/css/app.css">
-    <link rel="stylesheet" href="/BWI520/css/common.css">
-    <link rel="stylesheet" href="/BWI520/css/forms.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/app.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/messages.css">
 </head>
 <body>
     
@@ -30,10 +30,6 @@
         <h2>🔐 Anmeldung</h2>
         
         <!-- Nachricht anzeigen -->
-        <%
-            // Immer die richtige Message für Login setzen
-            myMessage.setLoginWelcome();
-        %>
         <jsp:getProperty name="myMessage" property="messageHtml" />
         
         <!-- Anmelde-Formular -->

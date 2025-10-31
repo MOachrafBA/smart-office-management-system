@@ -28,65 +28,14 @@ public class PostgreSQLAccess extends JDBCAccess {
 
   /**
    * Konfiguriert die Datenbankverbindungsparameter
-   * 
-   * Lädt die Verbindungseinstellungen aus der db.properties Datei im Classpath.
-   * Falls die Datei nicht gefunden wird oder ein Fehler auftritt, werden
-   * Standardwerte verwendet.
-   * 
-   * Die Methode setzt folgende Parameter:
-   * - dbDrivername: PostgreSQL JDBC Driver
-   * - dbURL: Datenbank-URL (Host, Port, Datenbankname)
-   * - dbUser: Benutzername für die Datenbank
-   * - dbPassword: Passwort für die Datenbank
-   * - dbSchema: Schema-Name in der Datenbank
-   * 
-   * @throws NoConnectionException wenn die Properties-Datei nicht geladen werden kann
+   * Einfache, direkte Konfiguration wie beim Dozenten
    */
   @Override
-  public void setDBParms() throws NoConnectionException {
-    // Properties-Objekt für Konfigurationswerte
-    Properties p = new Properties();
-
-    // db.properties aus dem Classpath laden (build/classes)
-    // Die Datei liegt in src/main/resources/ und wird beim Build nach build/classes kopiert
-    try (InputStream in = Thread.currentThread()
-                                .getContextClassLoader()
-                                .getResourceAsStream("db.properties")) {
-      
-      // Prüfen ob die Properties-Datei gefunden wurde
-      if (in == null) {
-        throw new NoConnectionException("db.properties nicht im Classpath gefunden (build/classes).");
-      }
-      
-      // Properties aus der Datei laden
-      p.load(in);
-      
-    } catch (Exception e) {
-      // Fehlerbehandlung: Detaillierte Fehlermeldung mit ursprünglicher Exception
-      throw new NoConnectionException("db.properties konnte nicht geladen werden: " + e.getMessage());
-    }
-
-    // Datenbankverbindungsparameter aus Properties laden
-    // Jeder Parameter hat einen Fallback-Wert (zweiter Parameter)
-    
-    // PostgreSQL JDBC Driver - Standardwert falls nicht in Properties definiert
-    String driver = p.getProperty("db.driver", "org.postgresql.Driver");
-    this.dbDrivername = driver;
-    
-    // Datenbank-URL: Host, Port und Datenbankname
-    // Fallback: localhost:5432 mit Standard-PostgreSQL-Datenbank
-    this.dbURL = p.getProperty("db.url", "jdbc:postgresql://localhost:5432/postgres");
-    
-    // Datenbank-Benutzername
-    // Fallback: Standard-Benutzer "bwi520"
-    this.dbUser = p.getProperty("db.user", "bwi520");
-    
-    // Datenbank-Passwort
-    // Fallback: Leeres Passwort (für Entwicklung)
-    this.dbPassword = p.getProperty("db.password", "");
-    
-    // Datenbank-Schema
-    // Fallback: Standard-Schema "public"
-    this.dbSchema = p.getProperty("db.schema", "public");
+  public void setDBParms() {
+    dbDrivername = "org.postgresql.Driver";
+    dbURL        = "jdbc:postgresql://localhost:5432/postgres";
+    dbUser       = "postgres";
+    dbPassword   = "pgusers";
+    dbSchema     = "bwi520";
   }
 }

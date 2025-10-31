@@ -5,39 +5,58 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class JDBCAccess {
-  protected Connection dbConn;
-  protected String dbDrivername, dbURL, dbUser, dbPassword, dbSchema;
 
-  public JDBCAccess() throws NoConnectionException {
-    setDBParms();       
-    createConnection();
-    setSchema();
-  }
-
-  // <<< hier: throws erlauben
-  public abstract void setDBParms() throws NoConnectionException;
-
-  public void createConnection() throws NoConnectionException {
-    try {
-      Class.forName(dbDrivername);
-      dbConn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
-    } catch (Exception e) {
-      throw new NoConnectionException(e.getMessage());
-    }
-  }
-
-  public void setSchema() throws NoConnectionException {
-    try {
-      if (dbSchema != null && !dbSchema.isBlank()) {
-        dbConn.createStatement().executeUpdate("SET search_path TO " + dbSchema + ", public");
-      }
-    } catch (SQLException e) {
-      throw new NoConnectionException(e.getMessage());
-    }
-  }
-
-  public Connection getConnection() throws NoConnectionException {
-    setSchema(); // sicherstellen
-    return dbConn;
-  }
+	Connection dbConn;
+	String dbDrivername;
+	String dbURL;
+	String dbUser;
+	String dbPassword;
+	String dbSchema;
+	
+	public JDBCAccess() throws NoConnectionException{
+		this.setDBParms();
+		this.createConnection();
+		this.setSchema();
+	}
+	
+	public abstract void setDBParms();
+	
+	public void setSchema() throws NoConnectionException {
+		try{
+			String sql = "SET SCHEMA '" + dbSchema + "'";
+			System.out.println(sql);
+			dbConn.createStatement().executeUpdate(sql);
+			System.out.println("Schema " + dbSchema + " erfolgreich gesetzt");
+		}catch(SQLException se){
+			se.printStackTrace();
+			throw new NoConnectionException();
+		}
+	}
+	
+	public void createConnection() throws NoConnectionException{
+		try{
+			Class.forName(dbDrivername);
+			System.out.println("JDBC-Treiber erfolgreich geladen");
+		
+			dbConn = DriverManager.getConnection(
+												dbURL,
+												dbUser,
+												dbPassword
+												);
+			System.out.println("Datenbankverbindung erfolgreich angelegt");
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new NoConnectionException();
+		}
+	}
+	
+	public Connection getConnection() throws NoConnectionException {
+		try{
+			this.setSchema();
+			return dbConn;
+		}catch(SQLException se){
+			se.printStackTrace();
+			throw new NoConnectionException();
+		}
+	}
 }

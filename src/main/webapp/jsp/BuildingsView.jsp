@@ -6,8 +6,8 @@
 <head>
     <title>Smart Office - Gebäude</title>
     <link rel="stylesheet" href="/BWI520/css/app.css">
-    <link rel="stylesheet" href="/BWI520/css/buildings.css">
     <link rel="stylesheet" href="/BWI520/css/common.css">
+    <link rel="stylesheet" href="/BWI520/css/buildings.css">
     <link rel="stylesheet" href="/BWI520/css/messages.css">
 </head>
 <body>
@@ -61,7 +61,6 @@
     <!-- Untere Navigation -->
     <nav class="bottom-nav">
         <a href="<%=request.getContextPath()%>/jsp/BuildingsView.jsp">🏠 Startseite</a>
-        <a href="<%=request.getContextPath()%>/jsp/test-buildings.jsp">🧪 Test-Version</a>
         <span>| Smart Office Management System v1.0</span>
     </nav>
 
