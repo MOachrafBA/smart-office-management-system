@@ -93,3 +93,6 @@ node_modules/
 *.backup
 *_backup
 
+# Screenshots - BEHALTEN (nicht ignorieren)
+# Screenshots sind wichtig für README, also NICHT ignorieren
+

@@ -209,12 +209,29 @@ ORDER BY s.id;
 
 ## 📸 Screenshots
 
-- Login-Seite mit Validierung
-- Gebäude-Übersicht
-- Interaktive Etagen-Ansicht
-- Raum-Karten mit Hover-Effekten
-- Sensoren-Tabelle mit Live-Updates
-- Steuerbefehle-Historie
+
+### Login & Authentifizierung
+![Login-Seite](screenshots/01-login.png)
+*Login-Seite mit E-Mail-Validierung und Fehlerbehandlung*
+
+### Gebäude-Verwaltung
+![Gebäude-Übersicht](screenshots/02-buildings.png)
+*Übersicht aller verfügbaren Gebäude*
+
+![Etagen-Navigation](screenshots/03-floors.png)
+*Interaktive Gebäude-Ansicht mit Hotspots für Etagen-Auswahl*
+
+### Raum-Verwaltung
+![Raum-Karten](screenshots/04-rooms.png)
+*Kartenansicht der Räume mit Hover-Effekten*
+
+### Sensoren-Steuerung
+![Sensoren-Tabelle](screenshots/05-sensors.png)
+*Live-Monitoring und Steuerung von Sensoren mit automatischen Updates*
+
+### Audit-Trail
+![Steuerbefehle-Historie](screenshots/06-requests.png)
+*Vollständige Protokollierung aller Benutzer-Aktionen*
 
 ## 🔮 Zukünftige Erweiterungen
 
