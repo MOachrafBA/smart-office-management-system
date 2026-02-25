@@ -12,7 +12,8 @@ public class SensorRow {
     this.unit=unit;// Einheit (z.B. "°C", "%")
     this.writable=writable; 
     this.value=value; // Aktueller Wert (z.B. "22.5")
-    this.ts=ts; // Zeitstempel (z.B. "2025-01-01 12:00:00")}
+    this.ts=ts; // Zeitstempel (z.B. "2025-01-01 12:00:00")
+  }
   
   public int getId(){
 	  return id;} 
